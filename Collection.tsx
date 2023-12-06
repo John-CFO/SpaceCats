@@ -1,13 +1,6 @@
 ///////////////collection stack/////////////////
 
-import {
-  View,
-  Text,
-  Image,
-  StatusBar,
-  StyleSheet,
-  FlatList,
-} from "react-native";
+import { View, Text, Image, StatusBar, StyleSheet, FlatList} from "react-native";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
