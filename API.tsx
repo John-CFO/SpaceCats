@@ -6,7 +6,7 @@ import axios from "axios";
 
 /*--fetching cat images from thecatapi.com--*/
 
-const API_KEY = "17d94b92-754f-46eb-99a0-65be65b5d18f";
+const API_KEY = "************************************";
 const API_URL = "https://api.thecatapi.com/v1/images/search";
 
 export const fetchCatImages = async (page: number) => {
