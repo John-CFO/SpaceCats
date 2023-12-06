@@ -18,13 +18,6 @@ const Onboarding = () => {
   //useNativation to navigate to the "Collection" stack
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
-  //useLayouteffect to disable the header
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#191919" }}>
       <View

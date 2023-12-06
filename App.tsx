@@ -19,9 +19,21 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Onboarding">
-          <Stack.Screen name="Onboarding" component={Onboarding} />
-          <Stack.Screen name="Collection" component={Collection} />
-          <Stack.Screen name="Details" component={Details} />
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Collection"
+            component={Collection}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Details"
+            component={Details}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

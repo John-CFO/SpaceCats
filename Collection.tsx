@@ -8,7 +8,7 @@ import {
   StyleSheet,
   FlatList,
 } from "react-native";
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
@@ -46,13 +46,6 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
       imageUrl,
     });
   };
-
-  //useLayouteffect to disable the header
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
 
   //data fetching from API
 

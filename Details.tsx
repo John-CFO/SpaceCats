@@ -40,15 +40,6 @@ const Details: React.FC = () => {
   const imageUrl = route?.params?.imageUrl;
   console.log("Route params - imageUrl:", imageUrl);
 
-  /*--collection layout--*/
-
-  //useLayouteffect to disable the header
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-
   /*--voting function--*/
 
   //declared Ref for "upvote" and "downvote" button
