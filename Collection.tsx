@@ -1,5 +1,6 @@
 ///////////////collection stack/////////////////
 
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,7 +9,6 @@ import {
   StyleSheet,
   FlatList,
 } from "react-native";
-import React, { useState, useEffect } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";

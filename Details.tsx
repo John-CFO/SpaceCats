@@ -1,14 +1,7 @@
 ////////////////////details stack/////////////////////
 
 import { Image, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React, {
-  useState,
-  useRef,
-  useMemo,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useRef, useMemo, useCallback, useEffect, useLayoutEffect} from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Animatable from "react-native-animatable";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
