@@ -33,7 +33,7 @@ type CollectionScreenNavigationProp = StackNavigationProp<
   "Collection"
 >;
 
-//
+//typography for object collectionprops
 interface CollectionProps {
   navigation: CollectionScreenNavigationProp;
 }
