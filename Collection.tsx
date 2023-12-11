@@ -8,6 +8,7 @@ import {
   StatusBar,
   StyleSheet,
   FlatList,
+  TouchableOpacity,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -49,29 +50,39 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
 
   //data fetching from API
 
+  //changed the data state
+  //if you exclute this line, the "Oops, found no data" screen will be visible
+  const [load, setLoad] = useState<number>(1);
+
   //initializing the function that fetched the API data to the clientside
   const [CatImages, setCatImages] = useState<{ id: string; url: string }[]>([]);
 
   //initialize loading function, when no data from API is requested
   const [isLoading, setIsLoading] = useState(false);
 
+  //inizialize error handling if images not loaded
+  const [error, setError] = useState<string | null>(null);
+
   //this function fetched the data from the API and catched the failed request
+  const fetchImages = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+
+      const images = await fetchCatImages(load);
+      console.log("API response", images);
+      setCatImages(images);
+    } catch (error) {
+      console.error("Error fetch images", error);
+      setCatImages([]);
+      setError("Failed to fresh ImageBase. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  //useEffect for initial data fetching
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        setIsLoading(true);
-
-        const images = await fetchCatImages(page);
-        console.log("API response", images);
-        setCatImages(images);
-      } catch (error) {
-        console.error("Error fetch images", error);
-        setCatImages([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchImages();
   }, []);
 
@@ -79,7 +90,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
   const moreImages = async () => {
     try {
       setIsLoading(true);
-      const moreImages = await fetchCatImages(page);
+      const moreImages = await fetchCatImages(load);
       setCatImages((prevImages) => [...prevImages, ...moreImages]);
     } catch (error) {
       console.error("Error loading more images", error);
@@ -88,9 +99,11 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
     }
   };
 
-  //changed the data state
-  //if you exclute this line, the "Oops, found no data" screen will be visible
-  const [page, setPage] = useState(1);
+  //function for the refresh button
+  const handleRefresh = () => {
+    setLoad(load + 1); //change value for a new request
+    fetchImages();
+  };
 
   return (
     <SafeAreaView>
@@ -112,7 +125,9 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
           }}
         >
           {/*--H1--*/}
-          <View style={styles.container}>
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
             <Text
               style={{
                 marginTop: 20,
@@ -121,7 +136,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                 color: "pink",
               }}
             >
-              Co<Text style={styles.highlightedText}>ll</Text>ection
+              Co<Text style={{ color: "mediumvioletred" }}>ll</Text>ection
             </Text>
           </View>
           {/*--H3--*/}
@@ -142,7 +157,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
           <View
             style={{
               width: 400,
-              height: 400,
+              height: 800,
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -151,6 +166,34 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
             <Text style={{ fontSize: 25, color: "mediumvioletred" }}>
               Oops, found no data
             </Text>
+
+            <View
+              style={{
+                marginTop: 120,
+                paddingHorizontal: 110,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TouchableOpacity onPress={handleRefresh}>
+                <Text
+                  style={{
+                    marginBottom: 100,
+                    fontWeight: "bold",
+                    fontSize: 26,
+                    color: "pink",
+                    paddingHorizontal: 28,
+                    paddingVertical: 10,
+                    borderWidth: 2,
+                    borderColor: "pink",
+                    borderRadius: 8,
+                    backgroundColor: "mediumvioletred",
+                  }}
+                >
+                  Refresh
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         ) : //--------LOADING SECTION
         isLoading ? (
@@ -208,11 +251,6 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
 //stylesheet for violet header highlight
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   highlightedText: {
     color: "mediumvioletred",
   },

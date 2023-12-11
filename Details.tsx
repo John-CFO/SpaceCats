@@ -1,14 +1,27 @@
 ////////////////////details stack/////////////////////
 
 import { Image, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React, { useState, useRef, useMemo, useCallback, useEffect, useLayoutEffect} from "react";
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+} from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Animatable from "react-native-animatable";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { Directions, ScrollView } from "react-native-gesture-handler";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
 
 import { heartBTN, splashBTN } from "./assets";
 import { NotFound } from "./assets";
+import CommentSection from "./components/CommentSection";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,6 +88,21 @@ const Details: React.FC = () => {
       setAnimation(null);
     }, 1000);
   };
+
+  /*--bottom sheet modal section--*/
+
+  //references
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  //variables
+  const snapPoints = useMemo(() => ["35%", "50%"], []);
+  //callbacks
+  const handlePrensentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log("handleSheetChanges", index);
+  }, []);
 
   return (
     <SafeAreaView
@@ -196,39 +224,50 @@ const Details: React.FC = () => {
 
       {/*button to modal*/}
 
-      <Animatable.View
-        animation={"bounceInUp"}
-        easing={"ease-in-out"}
-        duration={2000}
-      >
-        <TouchableOpacity>
-          <View
-            style={{
-              marginTop: 60,
-              paddingHorizontal: 110,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text
+      <BottomSheetModalProvider>
+        <Animatable.View
+          animation={"bounceInUp"}
+          easing={"ease-in-out"}
+          duration={2000}
+        >
+          <TouchableOpacity onPress={handlePrensentModalPress}>
+            <View
               style={{
-                marginBottom: 100,
-                fontWeight: "bold",
-                fontSize: 16,
-                color: "pink",
-                paddingHorizontal: 28,
-                paddingVertical: 10,
-                borderWidth: 2,
-                borderColor: "pink",
-                borderRadius: 8,
-                backgroundColor: "mediumvioletred",
+                marginTop: 60,
+                paddingHorizontal: 110,
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              leave a comment
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </Animatable.View>
+              <Text
+                style={{
+                  marginBottom: 100,
+                  fontWeight: "bold",
+                  fontSize: 16,
+                  color: "pink",
+                  paddingHorizontal: 28,
+                  paddingVertical: 10,
+                  borderWidth: 2,
+                  borderColor: "pink",
+                  borderRadius: 8,
+                  backgroundColor: "mediumvioletred",
+                }}
+              >
+                leave a comment
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </Animatable.View>
+
+        <BottomSheetModal
+          ref={bottomSheetModalRef}
+          index={1}
+          snapPoints={snapPoints}
+          onChange={handleSheetChanges}
+        >
+          <CommentSection />
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </SafeAreaView>
   );
 };
