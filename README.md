@@ -29,7 +29,7 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 ## Screenshots
 
   <h2>Onboarding Screen</h2>
-<image src= "">
+<image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/ONBOARDINGSCREEN.png?raw=true">
   
 <h2>Collection Screen</h2>
   <image src= "">
