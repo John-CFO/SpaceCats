@@ -26,6 +26,27 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 - Expo
 - REST API
 
+## Screenshots
+
+  <h2>Onboarding Screen</h2>
+<image src= "">
+  
+<h2>Collection Screen</h2>
+  <image src= "">
+    
+<h2>No Data Found Screen</h2>
+<image src="">
+
+  <h2>Loading Screen</h2>
+  <image src="">
+</div>
+
+  <h2>Details Screen</h2>
+  <image src="">
+</div>
+
+
+
 ## Live Review
 
 [Link to Live Review](http/......................)
