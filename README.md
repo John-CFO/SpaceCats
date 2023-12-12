@@ -26,6 +26,28 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 - Expo
 - REST API
 
+## Screenshots
+
+<div style="display: flex; justify-content: space-between;">
+  <h2>Onboarding Screen</h2>
+<image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/ONBOARDINGSCREEN.png?raw=true">
+  
+<h2>Collection Screen</h2>
+  <image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/COLLECTIONSCREEN.png?raw=true">
+    
+<h2>No Data Found Screen</h2>
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/NODATASCREEN.png?raw=true">
+
+  <h2>Loading Screen</h2>
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/LOADINGSCREEN.png?raw=true">
+
+
+  <h2>Details Screen</h2>
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/DETAILSCREEN.png?raw=true">
+</div>
+
+
+
 ## Live Review
 
 [Link to Live Review](http/......................)
