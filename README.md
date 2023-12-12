@@ -32,17 +32,17 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 <image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/ONBOARDINGSCREEN.png?raw=true">
   
 <h2>Collection Screen</h2>
-  <image src= "">
+  <image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/COLLECTIONSCREEN.png?raw=true">
     
 <h2>No Data Found Screen</h2>
-<image src="">
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/NODATASCREEN.png?raw=true">
 
   <h2>Loading Screen</h2>
-  <image src="">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/LOADINGSCREEN.png?raw=true">
 </div>
 
   <h2>Details Screen</h2>
-  <image src="">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/DETAILSCREEN.png?raw=true">
 </div>
 
 
