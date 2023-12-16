@@ -263,12 +263,4 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
   );
 };
 
-//stylesheet for violet header highlight
-
-const styles = StyleSheet.create({
-  highlightedText: {
-    color: "mediumvioletred",
-  },
-});
-
 export default Collection;
