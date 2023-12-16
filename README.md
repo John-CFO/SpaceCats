@@ -25,6 +25,8 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 - TypeScript
 - Expo
 - REST API
+- Node.js
+- Express.js
 
 ## Screenshots
 
