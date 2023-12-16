@@ -1,4 +1,4 @@
-///////////////collection stack/////////////////
+////////////////collection stack//////////////////
 
 import React, { useState, useEffect } from "react";
 import {
@@ -13,85 +13,90 @@ import {
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
+import axios from "axios";
 
-import { fetchCatImages } from "./API";
 import ItemContainer from "./components/ItemContainer";
 import { NotFound } from "./assets";
 
-////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
-/*--navigation to send images to the details screen and navigate between the stacks--*/
-
-//stack navigation typography
+//typography from the stack navigation
 type RootStackParamList = {
   Collection: undefined;
   Details: { imageUrl: string };
 };
 
-//typography for declaration (StackNavigationProp)
+//typography from stacknavigationprop for the nav. to "Collection"
 type CollectionScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   "Collection"
 >;
 
-//typography for object collectionprops
+//object typography for the cat images as object (json)
 interface CollectionProps {
   navigation: CollectionScreenNavigationProp;
 }
 
+//base URL for fetching images from the backend server
+const API_URL = "http://192.168.178.26:8021";
+
 const Collection: React.FC<CollectionProps> = ({ navigation }) => {
-  //passing data from flatlist to <Image/> on details.tsx
-  const navigateToDetails = (imageUrl: string) => {
-    console.log("Navigating to details with imageUrl:", imageUrl);
-    navigation.navigate("Details", {
-      imageUrl,
-    });
-  };
-
-  //data fetching from API
-
-  //changed the data state
-  //if you exclute this line, the "Oops, found no data" screen will be visible
+  //change state to load the images
   const [load, setLoad] = useState<number>(1);
-
-  //initializing the function that fetched the API data to the clientside
-  const [CatImages, setCatImages] = useState<{ id: string; url: string }[]>([]);
-
-  //initialize loading function, when no data from API is requested
+  const [catImages, setCatImages] = useState<{ id: string; url: string }[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  //inizialize error handling if images not loaded
   const [error, setError] = useState<string | null>(null);
 
-  //this function fetched the data from the API and catched the failed request
-  const fetchImages = async () => {
+  //function to fetch the images with axios
+  const fetchImages = async (
+    load: number
+  ): Promise<{ id: string; url: string }[]> => {
+    try {
+      const response = await axios.get(API_URL, {
+        params: {
+          load,
+          limit: 24,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching images", error);
+      throw error;
+    }
+  };
+  //useEffect for initial data fetching on component mount
+  useEffect(() => {
+    fetchImagesData();
+  }, []);
+
+  //function to handle the data loading and error catching
+  const fetchImagesData = async (): Promise<void> => {
     try {
       setIsLoading(true);
       setError(null);
 
-      const images = await fetchCatImages(load);
+      const images = await fetchImages(load);
       console.log("API response", images);
+
       setCatImages(images);
+      setIsLoading(false);
     } catch (error) {
-      console.error("Error fetch images", error);
+      console.error("Error fetching images", error);
       setCatImages([]);
-      setError("Failed to fresh ImageBase. Please try again.");
+      setError("Failed to fetch ImageBase. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  //useEffect for initial data fetching
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
-  //this function loads more images when flatlist ends
+  //function to load morge images if the user scrolled to the end of screen
   const moreImages = async () => {
     try {
       setIsLoading(true);
-      const moreImages = await fetchCatImages(load);
-      setCatImages((prevImages) => [...prevImages, ...moreImages]);
+      const moreImagesData = await fetchImages(load + 1);
+
+      setCatImages((prevImages) => [...prevImages, ...moreImagesData]);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error loading more images", error);
     } finally {
@@ -102,7 +107,15 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
   //function for the refresh button
   const handleRefresh = () => {
     setLoad(load + 1); //change value for a new request
-    fetchImages();
+    fetchImagesData();
+  };
+
+  //navigation function to send the image data to the detailscreen
+  const navigateToDetails = (imageUrl: string) => {
+    console.log("Navigating to details with imageUrl:", imageUrl);
+    navigation.navigate("Details", {
+      imageUrl,
+    });
   };
 
   return (
@@ -153,7 +166,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
         </View>
 
         {/*--NO DATA FOUND SECTION--*/}
-        {CatImages.length === 0 && !isLoading ? ( //no data found
+        {catImages.length === 0 && !isLoading ? ( //no data found
           <View
             style={{
               width: 400,
@@ -197,7 +210,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
           </View>
         ) : //--------LOADING SECTION
         isLoading ? (
-          <View style={{ height: 400, width: 400, alignItems: "center" }}>
+          <View style={{ height: 700, width: 400, alignItems: "center" }}>
             <LottieView
               source={require("./assets/lottie_animation/cat-climber.json")}
               autoPlay
@@ -206,6 +219,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
 
             <Text
               style={{
+                marginTop: 130,
                 color: "mediumvioletred",
                 fontSize: 15,
               }}
@@ -217,7 +231,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
           //--------IMAGE LIST SECTION
           <View style={{ flex: 1, justifyContent: "center" }}>
             <FlatList
-              data={CatImages}
+              data={catImages}
               numColumns={2}
               renderItem={({ item }) => (
                 <View style={{ flex: 1, padding: 12, alignItems: "center" }}>
@@ -231,6 +245,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
               keyExtractor={(item) => item.id.toString()} //importent for fetch data from API
               //importent for load more data if the list ended
               onEndReached={moreImages}
+              initialNumToRender={5}
               onEndReachedThreshold={0.1}
               contentContainerStyle={{ justifyContent: "center" }}
               style={{ flex: 1 }}
