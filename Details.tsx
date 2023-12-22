@@ -283,7 +283,6 @@ const Details: React.FC = () => {
             </TouchableOpacity>
           </Animatable.View>
 
-          {/*--BottomSheetModal--*/}
           <BottomSheetModal
             ref={bottomSheetModalRef}
             index={1}
