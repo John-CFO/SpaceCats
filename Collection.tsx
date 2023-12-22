@@ -6,9 +6,9 @@ import {
   Text,
   Image,
   StatusBar,
-  StyleSheet,
   FlatList,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -119,147 +119,154 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView>
-      <View
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#191919",
-        }}
-      >
-        {/*--HEADING SECTION--*/}
+    <ImageBackground
+      source={require("./assets/background_dark.png")}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView>
         <View
           style={{
-            height: 150,
-            backgroundColor: "#191919",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 10,
+            width: "100%",
+            height: "100%",
           }}
         >
-          {/*--H1--*/}
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                marginTop: 20,
-                fontSize: 38,
-                fontWeight: "bold",
-                color: "pink",
-              }}
-            >
-              Co<Text style={{ color: "mediumvioletred" }}>ll</Text>ection
-            </Text>
-          </View>
-          {/*--H3--*/}
-          <Text
-            style={{
-              marginBottom: 50,
-              fontSize: 18,
-              fontWeight: "bold",
-              color: "pink",
-            }}
-          >
-            click any picture, vote, comment and smile
-          </Text>
-        </View>
-
-        {/*--NO DATA FOUND SECTION--*/}
-        {catImages.length === 0 && !isLoading ? ( //no data found
+          {/*--HEADING SECTION--*/}
           <View
             style={{
-              width: 400,
-              height: 800,
+              height: 150,
+              backgroundColor: "transparent",
               justifyContent: "center",
               alignItems: "center",
+              gap: 10,
             }}
           >
-            <Image source={NotFound} style={{ width: 120, height: 120 }} />
-            <Text style={{ fontSize: 25, color: "mediumvioletred" }}>
-              Oops, found no data
-            </Text>
-
+            {/*--H1--*/}
             <View
               style={{
-                marginTop: 120,
-                paddingHorizontal: 110,
+                flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              <TouchableOpacity onPress={handleRefresh}>
-                <Text
-                  style={{
-                    marginBottom: 100,
-                    fontWeight: "bold",
-                    fontSize: 26,
-                    color: "pink",
-                    paddingHorizontal: 28,
-                    paddingVertical: 10,
-                    borderWidth: 2,
-                    borderColor: "pink",
-                    borderRadius: 8,
-                    backgroundColor: "mediumvioletred",
-                  }}
-                >
-                  Refresh
-                </Text>
-              </TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 20,
+                  fontSize: 38,
+                  fontWeight: "bold",
+                  color: "pink",
+                }}
+              >
+                Co<Text style={{ color: "hotpink" }}>ll</Text>ection
+              </Text>
             </View>
-          </View>
-        ) : //--------LOADING SECTION
-        isLoading ? (
-          <View style={{ height: 700, width: 400, alignItems: "center" }}>
-            <LottieView
-              source={require("./assets/lottie_animation/cat-climber.json")}
-              autoPlay
-              loop
-            />
-
+            {/*--H3--*/}
             <Text
               style={{
-                marginTop: 130,
-                color: "mediumvioletred",
-                fontSize: 15,
+                marginBottom: 50,
+                fontSize: 18,
+                fontWeight: "bold",
+                color: "pink",
               }}
             >
-              LOADING
+              click any picture, vote, comment and smile
             </Text>
           </View>
-        ) : (
-          //--------IMAGE LIST SECTION
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <FlatList
-              data={catImages}
-              numColumns={2}
-              renderItem={({ item }) => (
-                <View style={{ flex: 1, padding: 12, alignItems: "center" }}>
-                  <ItemContainer
-                    onPress={() => navigateToDetails(item.url)}
-                    key={item.id}
-                    imageSrc={item.url}
-                  />
-                </View>
-              )}
-              keyExtractor={(item) => item.id.toString()} //importent for fetch data from API
-              //importent for load more data if the list ended
-              onEndReached={moreImages}
-              initialNumToRender={5}
-              onEndReachedThreshold={0.1}
-              contentContainerStyle={{ justifyContent: "center" }}
-              style={{ flex: 1 }}
-            />
-          </View>
-        )}
-      </View>
-      {/*--statusbar styleing--*/}
-      <StatusBar
-        translucent={true}
-        backgroundColor="#191919"
-        barStyle="light-content"
-      />
-    </SafeAreaView>
+
+          {/*--NO DATA FOUND SECTION--*/}
+          {catImages.length === 0 && !isLoading ? ( //no data found
+            <View
+              style={{
+                width: 400,
+                height: 800,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image source={NotFound} style={{ width: 120, height: 120 }} />
+              <Text style={{ fontSize: 25, color: "hotpink" }}>
+                Oops, found no data
+              </Text>
+
+              <View
+                style={{
+                  marginTop: 120,
+                  paddingHorizontal: 110,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <TouchableOpacity onPress={handleRefresh}>
+                  <Text
+                    style={{
+                      marginBottom: 100,
+                      fontWeight: "bold",
+                      fontSize: 26,
+                      color: "pink",
+                      paddingHorizontal: 28,
+                      paddingVertical: 10,
+                      borderWidth: 2,
+                      borderColor: "lightgray",
+                      borderRadius: 8,
+                      backgroundColor: "transparent",
+                    }}
+                  >
+                    Refresh
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ) : ///////////////LOADING SECTION
+          isLoading ? (
+            <View style={{ height: 700, width: 400, alignItems: "center" }}>
+              <LottieView
+                source={require("./assets/lottie_animation/cat-climber.json")}
+                autoPlay
+                loop
+              />
+
+              <Text
+                style={{
+                  marginTop: 130,
+                  color: "hotpink",
+                  fontSize: 15,
+                }}
+              >
+                LOADING
+              </Text>
+            </View>
+          ) : (
+            /////////////IMAGE LIST SECTION
+            <View style={{ flex: 1, justifyContent: "center" }}>
+              <FlatList
+                data={catImages}
+                numColumns={2}
+                renderItem={({ item }) => (
+                  <View style={{ flex: 1, padding: 12, alignItems: "center" }}>
+                    <ItemContainer
+                      onPress={() => navigateToDetails(item.url)}
+                      key={item.id}
+                      imageSrc={item.url}
+                    />
+                  </View>
+                )}
+                keyExtractor={(item) => item.id.toString()} //importent for fetch data from API
+                onEndReached={moreImages} //importent for load more data if the list ended
+                initialNumToRender={5}
+                onEndReachedThreshold={0.1}
+                contentContainerStyle={{ justifyContent: "center" }}
+                style={{ flex: 1 }}
+              />
+            </View>
+          )}
+        </View>
+        {/*--statusbar styleing--*/}
+        <StatusBar
+          translucent={true}
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 

@@ -1,19 +1,17 @@
 ////////////////////details stack/////////////////////
 
-import { Image, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React, {
-  useState,
-  useRef,
-  useMemo,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-} from "react";
+import {
+  Image,
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Animatable from "react-native-animatable";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Directions, ScrollView } from "react-native-gesture-handler";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -22,6 +20,7 @@ import {
 import { heartBTN, splashBTN } from "./assets";
 import { NotFound } from "./assets";
 import CommentSection from "./components/CommentSection";
+import { commentData } from "./components/Users";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,171 +103,199 @@ const Details: React.FC = () => {
     console.log("handleSheetChanges", index);
   }, []);
 
-  return (
-    <SafeAreaView
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#191919",
-      }}
-    >
-      {/*--image container section--*/}
+  const handleLike = (commentId: number) => {
+    //logik für like
+  };
 
-      <View
+  return (
+    <ImageBackground
+      source={require("./assets/background_dark.png")}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView
         style={{
-          marginTop: 40,
           width: "100%",
-          height: 440,
-          backgroundColor: "#191919",
-          justifyContent: "space-between",
+          height: "100%",
         }}
       >
+        {/*--image container section--*/}
+
         <View
           style={{
-            position: "relative",
+            marginTop: 40,
+            width: "100%",
+            height: 440,
 
-            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          {/*--image container--*/}
+          <View
+            style={{
+              position: "relative",
+              alignItems: "center",
+            }}
+          >
+            {/*--image view section--*/}
 
-          <View style={{ alignItems: "center" }}>
-            {/*-- X-button (go to collection)--*/}
-
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Collection")}
-              style={{
-                position: "absolute",
-                zIndex: +1,
-                top: 15,
-                right: 15,
-                width: 40,
-                height: 40,
-                borderRadius: 30,
-                borderColor: "pink",
-                borderWidth: 2,
-                backgroundColor: "mediumvioletred",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text style={{ color: "pink", fontSize: 26, fontWeight: "bold" }}>
-                X
-              </Text>
-            </TouchableOpacity>
-
-            <View
-              style={{
-                borderWidth: 4,
-                borderColor: "white",
-                borderRadius: 15,
-                width: 350,
-                height: 340,
-                backgroundColor: "#191919",
-                paddingHorizontal: 2,
-                paddingVertical: 2,
-                overflow: "hidden",
-              }}
-            >
-              <View style={{ borderRadius: 4 }}>
-                <Image
-                  style={{ width: "100%", height: 350 }}
-                  source={{ uri: imageUrl }}
-                />
-              </View>
-            </View>
-          </View>
-
-          {/*--voting secition--*/}
-
-          <View style={{ flexDirection: "row", gap: 30, padding: 20 }}>
-            {/*heart button*/}
-            <TouchableOpacity onPress={() => handleToggleVote("up")}>
-              <Animatable.View
-                ref={upvoteButtonRef}
-                animation="rubberBand"
-                duration={1000}
-              >
-                <Image source={heartBTN} style={{ width: 60, height: 60 }} />
-              </Animatable.View>
-            </TouchableOpacity>
-            {/*counter*/}
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <Text style={{ padding: 5, fontSize: 25, color: "red" }}>
-                {upvotes}
-              </Text>
-              <Text style={{ padding: 5, fontSize: 25, color: "lime" }}>
-                {downvotes}
-              </Text>
-            </View>
-            {/*splash button*/}
-            <TouchableOpacity onPress={() => handleToggleVote("down")}>
-              <Animatable.View
-                ref={downvoteButtonRef}
-                animation="rubberBand"
-                duration={1000}
-              >
-                <Image source={splashBTN} style={{ width: 60, height: 60 }} />
-              </Animatable.View>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-
-      {/*--comment section--*/}
-
-      {/*button to modal*/}
-
-      <BottomSheetModalProvider>
-        <Animatable.View
-          animation={"bounceInUp"}
-          easing={"ease-in-out"}
-          duration={2000}
-        >
-          <TouchableOpacity onPress={handlePrensentModalPress}>
-            <View
-              style={{
-                marginTop: 60,
-                paddingHorizontal: 110,
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Text
+            <View style={{ alignItems: "center" }}>
+              {/*-- X-button (go to collection)--*/}
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Collection")}
                 style={{
-                  marginBottom: 100,
-                  fontWeight: "bold",
-                  fontSize: 16,
-                  color: "pink",
-                  paddingHorizontal: 28,
-                  paddingVertical: 10,
-                  borderWidth: 2,
-                  borderColor: "pink",
-                  borderRadius: 8,
-                  backgroundColor: "mediumvioletred",
+                  position: "absolute",
+                  zIndex: +1,
+                  top: 15,
+                  right: 15,
+                  width: 40,
+                  height: 40,
+                  borderRadius: 30,
+                  borderColor: "lightgray",
+                  borderWidth: 4,
+                  backgroundColor: "red",
+                  alignItems: "center",
                 }}
               >
-                leave a comment
-              </Text>
+                <Text
+                  style={{
+                    bottom: 2,
+                    color: "lightgray",
+                    fontSize: 26,
+                    fontWeight: "bold",
+                  }}
+                >
+                  X
+                </Text>
+              </TouchableOpacity>
+              {/*--image container--*/}
+              <View
+                style={{
+                  borderWidth: 4,
+                  borderColor: "white",
+                  borderRadius: 15,
+                  width: 400,
+                  height: 340,
+                  paddingHorizontal: 2,
+                  paddingVertical: 2,
+                  overflow: "hidden",
+                }}
+              >
+                <View style={{ borderRadius: 4 }}>
+                  <Image
+                    style={{ width: "100%", height: 330 }}
+                    source={{ uri: imageUrl }}
+                  />
+                </View>
+              </View>
             </View>
-          </TouchableOpacity>
-        </Animatable.View>
 
-        <BottomSheetModal
-          ref={bottomSheetModalRef}
-          index={1}
-          snapPoints={snapPoints}
-          onChange={handleSheetChanges}
-        >
-          <CommentSection />
-        </BottomSheetModal>
-      </BottomSheetModalProvider>
-    </SafeAreaView>
+            {/*--voting secition--*/}
+
+            <View style={{ flexDirection: "row", gap: 30, padding: 20 }}>
+              {/*--heart button--*/}
+              <TouchableOpacity onPress={() => handleToggleVote("up")}>
+                <Animatable.View
+                  ref={upvoteButtonRef}
+                  animation="rubberBand"
+                  duration={1000}
+                >
+                  <Image source={heartBTN} style={{ width: 60, height: 60 }} />
+                </Animatable.View>
+              </TouchableOpacity>
+              {/*--counter--*/}
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    padding: 5,
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    color: "red",
+                  }}
+                >
+                  {upvotes}
+                </Text>
+                <Text
+                  style={{
+                    padding: 5,
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    color: "lime",
+                  }}
+                >
+                  {downvotes}
+                </Text>
+              </View>
+              {/*--splash button--*/}
+              <TouchableOpacity onPress={() => handleToggleVote("down")}>
+                <Animatable.View
+                  ref={downvoteButtonRef}
+                  animation="rubberBand"
+                  duration={1000}
+                >
+                  <Image source={splashBTN} style={{ width: 60, height: 60 }} />
+                </Animatable.View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+
+        {/*--comment section--*/}
+
+        {/*--BottomSheetModal and the navigation button--*/}
+
+        <BottomSheetModalProvider>
+          {/*--button to comment section--*/}
+          <Animatable.View
+            animation={"bounceInUp"}
+            easing={"ease-in-out"}
+            duration={2000}
+          >
+            <TouchableOpacity onPress={handlePrensentModalPress}>
+              <View
+                style={{
+                  marginTop: 60,
+                  paddingHorizontal: 110,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    marginBottom: 100,
+                    fontWeight: "bold",
+                    fontSize: 16,
+                    color: "pink",
+                    paddingHorizontal: 28,
+                    paddingVertical: 10,
+                    borderWidth: 2,
+                    borderColor: "lightgray",
+                    borderRadius: 8,
+                    backgroundColor: "transparent",
+                  }}
+                >
+                  leave a comment
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </Animatable.View>
+
+          {/*--BottomSheetModal--*/}
+          <BottomSheetModal
+            ref={bottomSheetModalRef}
+            index={1}
+            snapPoints={snapPoints}
+            onChange={handleSheetChanges}
+            backgroundStyle={{ backgroundColor: "dimgray" }}
+          >
+            <CommentSection comments={commentData as any} onLike={handleLike} />
+          </BottomSheetModal>
+        </BottomSheetModalProvider>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
