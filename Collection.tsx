@@ -1,4 +1,4 @@
-////////////////collection stack//////////////////
+//////////////////////////////collection stack////////////////////////////////
 
 import React, { useState, useEffect } from "react";
 import {
@@ -18,7 +18,7 @@ import axios from "axios";
 import ItemContainer from "./components/ItemContainer";
 import { NotFound } from "./assets";
 
-////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 //typography from the stack navigation
 type RootStackParamList = {
@@ -36,6 +36,8 @@ type CollectionScreenNavigationProp = StackNavigationProp<
 interface CollectionProps {
   navigation: CollectionScreenNavigationProp;
 }
+
+///////////////////////////////////////////////////////////////////////////////////
 
 //base URL for fetching images from the backend server
 const API_URL = "http://192.168.178.26:8021";

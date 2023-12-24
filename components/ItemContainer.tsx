@@ -1,20 +1,17 @@
-////////Item-Container for colletion(flatlist)////////////////
+//////////////Item-Container for colletion(flatlist)////////////////
 
-import {
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  GestureResponderEvent,
-} from "react-native";
+import { Image, TouchableOpacity, GestureResponderEvent } from "react-native";
 import React from "react";
 
-///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
 
 //typography for imageSrc object
 interface ItemContainerProps {
   imageSrc: string;
   onPress?: (event: GestureResponderEvent) => void;
 }
+
+///////////////////////////////////////////////////////////////////
 
 const ItemContainer: React.FC<ItemContainerProps> = ({
   imageSrc,

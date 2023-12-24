@@ -20,7 +20,7 @@ import {
 import { heartBTN, splashBTN } from "./assets";
 import { NotFound } from "./assets";
 import CommentSection from "./components/CommentSection";
-import { commentData } from "./components/Users";
+import { commentData, CommentProfile } from "./components/Users";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,6 +37,8 @@ type DetailsScreenNavigationProp = StackNavigationProp<
 >;
 //typography for detailscreen navigation declaration (RootStackParamList)
 type DetailsScreenRouteProp = RouteProp<RootStackParamList, "Details">;
+
+////////////////////////////////////////////////////////////////////////////////////////////
 
 const Details: React.FC = () => {
   //passing data from collection.tsx to details.tsx
@@ -103,9 +105,22 @@ const Details: React.FC = () => {
     console.log("handleSheetChanges", index);
   }, []);
 
+  //comment like
   const handleLike = (commentId: number) => {
-    //logik für like
+    ////////////////////
   };
+
+  const [replyUsername, setReplyUsername] = useState("");
+
+  const handleReply = (commentId: number, replyUsername: string) => {
+    console.log(`Replying to comment with ID ${commentId}`);
+
+    setReplyUsername(replyUsername);
+    handlePrensentModalPress();
+  };
+
+  const commentId: number =
+    commentData.length > 0 ? parseInt(commentData[0].id, 10) : 0;
 
   return (
     <ImageBackground
@@ -150,14 +165,13 @@ const Details: React.FC = () => {
                   height: 40,
                   borderRadius: 30,
                   borderColor: "lightgray",
-                  borderWidth: 4,
-                  backgroundColor: "red",
+                  borderWidth: 2,
+                  backgroundColor: "black",
                   alignItems: "center",
                 }}
               >
                 <Text
                   style={{
-                    bottom: 2,
                     color: "lightgray",
                     fontSize: 26,
                     fontWeight: "bold",
@@ -195,7 +209,7 @@ const Details: React.FC = () => {
               <TouchableOpacity onPress={() => handleToggleVote("up")}>
                 <Animatable.View
                   ref={upvoteButtonRef}
-                  animation="rubberBand"
+                  animation={animation === "heart" ? "rubberBand" : undefined} //must be jsx to delete the initial animation after bundling
                   duration={1000}
                 >
                   <Image source={heartBTN} style={{ width: 60, height: 60 }} />
@@ -233,7 +247,7 @@ const Details: React.FC = () => {
               <TouchableOpacity onPress={() => handleToggleVote("down")}>
                 <Animatable.View
                   ref={downvoteButtonRef}
-                  animation="rubberBand"
+                  animation={animation === "splash" ? "rubberBand" : undefined} //must be jsx to delete the initial animation after bundling
                   duration={1000}
                 >
                   <Image source={splashBTN} style={{ width: 60, height: 60 }} />
@@ -288,9 +302,16 @@ const Details: React.FC = () => {
             index={1}
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
-            backgroundStyle={{ backgroundColor: "dimgray" }}
+            backgroundStyle={{ backgroundColor: "#191919" }}
           >
-            <CommentSection comments={commentData as any} onLike={handleLike} />
+            <CommentSection
+              comments={commentData as any}
+              onLike={handleLike}
+              commentId={commentId}
+              onReply={(commentId, replyUsername) =>
+                handleReply(commentId, replyUsername)
+              }
+            />
           </BottomSheetModal>
         </BottomSheetModalProvider>
       </SafeAreaView>

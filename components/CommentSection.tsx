@@ -1,11 +1,15 @@
+//////////////////////////comment section///////////////////////////////////////
+
 import { View, Text, Image, ImageSourcePropType } from "react-native";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
 
 import CommentForm from "./CommentForm";
 import { CommentProfile } from "./Users";
 import { whiteHeart, redHeart } from "../assets";
+
+////////////////////////////////////////////////////////////////////////////////
 
 export interface Comment {
   id: number;
@@ -18,14 +22,18 @@ export interface Comment {
 
 interface CommentSectionProps {
   comments: Comment[];
-  onReply?: (commentId: number) => void;
+  onReply?: (commentId: number, replyUsername: string) => void;
   onLike?: (commentId: number) => void;
+  commentId: number;
 }
+
+///////////////////////////////////////////////////////////////////////////////
 
 const CommentSection: React.FC<CommentSectionProps> = ({
   comments,
   onReply,
   onLike,
+  commentId,
 }) => {
   //comments state implementation
   const [commentData, setCommentData] = useState<Comment[]>(comments);
@@ -35,9 +43,15 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     {}
   );
 
-  const commentSectionRef = useRef<CommentSectionProps>(null);
+  //const commentSectionRef = useRef<CommentSectionProps>(null);
 
-  const addComment = (newCommentText: string) => {
+  const addComment = (newCommentText: string, parentCommentId: number) => {
+    const parentComment = commentData.find(
+      (comment) => comment.id === parentCommentId
+    );
+
+    //const [replyUsername, setReplyUsername] = useState("");
+
     const newComment: Comment = {
       id: commentData.length + 1,
       user: "Anon",
@@ -47,6 +61,16 @@ const CommentSection: React.FC<CommentSectionProps> = ({
       likes: 0,
     };
     setCommentData([...commentData, newComment]); //initialized a new comment state with the new comment
+    const updatedComments = [...commentData, newComment];
+
+    setCommentData(updatedComments);
+  };
+
+  const [replyUsername, setReplyUsername] = useState("");
+
+  const handleReply = (commentId: number, replyUsername: string) => {
+    console.log(`Replying to comment with ID ${commentId}`);
+    setReplyUsername(replyUsername);
   };
 
   const handleLikes = (commentId: number) => {
@@ -60,7 +84,12 @@ const CommentSection: React.FC<CommentSectionProps> = ({
   return (
     <View style={{ flex: 1 }}>
       <View>
-        <CommentForm onAddComment={addComment} />
+        <CommentForm
+          onAddComment={(text, commentId) => addComment(text, commentId)}
+          initialText={`@Anon`}
+          commentId={commentId}
+          replyUsername={replyUsername}
+        />
       </View>
       <ScrollView style={{ marginTop: 3 }}>
         {commentData.map((comment) => (
@@ -68,7 +97,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             key={comment.id}
             style={{
               borderWidth: 5,
-              borderColor: "dimgray",
+              borderColor: "#191919",
               height: 100,
               flexDirection: "row",
             }}
@@ -119,12 +148,13 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             >
               <TouchableOpacity onPress={() => handleLikes(comment.id)}>
                 <Image
-                  source={likedComments[comment.id] ? redHeart : whiteHeart}
+                  source={likedComments[comment.id] ? redHeart : whiteHeart} //jsx to change from white to red heart
                   style={{ width: 25, height: 25 }}
                 />
               </TouchableOpacity>
-
-              <TouchableOpacity onPress={() => onReply && onReply(comment.id)}>
+              <TouchableOpacity
+                onPress={() => onReply && onReply(comment.id, comment.user)}
+              >
                 <Text style={{ color: "white" }}>Reply</Text>
               </TouchableOpacity>
             </View>
