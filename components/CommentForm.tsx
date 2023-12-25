@@ -38,7 +38,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
       onAddComment(newComment, commentId); //pushed the new comment
       setNewComment(""); //set the state back to emty
 
-      inputRef.current?.focus();
+      inputRef.current?.blur(); //if you want to close the keyboard after submit set blur
     } else {
       console.log("Comment is empty or just contains spaces. Not submitting.");
     }
@@ -68,7 +68,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
       }
 
       count += 1;
-    }, 800); //handle animation time
+    }, 700); //handle animation time
 
     return () => clearInterval(interval);
   }, []);
