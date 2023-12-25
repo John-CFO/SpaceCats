@@ -20,7 +20,8 @@ import {
 import { heartBTN, splashBTN } from "./assets";
 import { NotFound } from "./assets";
 import CommentSection from "./components/CommentSection";
-import { commentData, CommentProfile } from "./components/Users";
+import { commentData } from "./components/Users";
+import Handle from "./components/HandleIndicator";
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -121,6 +122,8 @@ const Details: React.FC = () => {
 
   const commentId: number =
     commentData.length > 0 ? parseInt(commentData[0].id, 10) : 0;
+
+  /*--bottom sheet handle animation--*/
 
   return (
     <ImageBackground
@@ -302,6 +305,7 @@ const Details: React.FC = () => {
             index={1}
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
+            handleComponent={Handle}
             backgroundStyle={{ backgroundColor: "#191919" }}
           >
             <CommentSection
