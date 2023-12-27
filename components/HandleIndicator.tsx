@@ -9,7 +9,6 @@ import Animated, {
   useAnimatedStyle,
   useDerivedValue,
 } from "react-native-reanimated";
-
 import { toRad } from "react-native-redash";
 
 //////////////////////////////////////////////////////////////////////////////

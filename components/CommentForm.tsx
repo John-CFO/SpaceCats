@@ -80,7 +80,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
       <Text
         style={{
           color: "pink",
-          fontWeight: "bold",
+          fontFamily: "MontserratAlternatesBold",
           fontSize: 32,
           borderBottomWidth: 1,
           marginHorizontal: 25,
@@ -106,6 +106,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
         <TextInput
           ref={inputRef}
           placeholder={`Add a comment${dots}`}
+          keyboardAppearance="dark"
           placeholderTextColor={"rgba(211, 211, 211, 0.5)"}
           value={newComment}
           onChangeText={(text) => setNewComment(text)}
@@ -134,7 +135,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
           >
             <Text
               style={{
-                fontWeight: "bold",
+                fontFamily: "MontserratAlternatesBold",
                 fontSize: 22,
                 color: "mediumvioletred",
               }}

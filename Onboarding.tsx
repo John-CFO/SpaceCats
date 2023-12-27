@@ -9,9 +9,10 @@ import {
   ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import * as Animatable from "react-native-animatable";
+import { useFonts } from "@expo-google-fonts/montserrat-alternates";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,16 @@ type RootStackParamList = {
 const Onboarding = () => {
   //useNativation to navigate to the "Collection" stack
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+  //function for googe-fonts implemantation
+  const [fontsLoaded] = useFonts({
+    MontserratAlternatesBold: require("./assets/fonts/MontserratAlternates-Bold.ttf"),
+    MontserratAlternatesRegular: require("./assets/fonts/MontserratAlternates-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <ImageBackground
@@ -69,8 +80,9 @@ const Onboarding = () => {
               <Text
                 style={{
                   marginBottom: 100,
-                  fontWeight: "bold",
+                  //fontWeight: "bold",
                   fontSize: 26,
+                  fontFamily: "MontserratAlternatesBold",
                   color: "pink",
                   paddingHorizontal: 28,
                   paddingVertical: 10,

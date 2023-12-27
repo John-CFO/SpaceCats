@@ -175,9 +175,10 @@ const Details: React.FC = () => {
               >
                 <Text
                   style={{
+                    bottom: 1.5,
                     color: "lightgray",
                     fontSize: 26,
-                    fontWeight: "bold",
+                    fontFamily: "MontserratAlternatesBold",
                   }}
                 >
                   X
@@ -283,18 +284,18 @@ const Details: React.FC = () => {
                 <Text
                   style={{
                     marginBottom: 100,
-                    fontWeight: "bold",
-                    fontSize: 16,
+                    fontFamily: "MontserratAlternatesBold",
+                    fontSize: 24,
                     color: "pink",
                     paddingHorizontal: 28,
                     paddingVertical: 10,
                     borderWidth: 2,
                     borderColor: "lightgray",
-                    borderRadius: 8,
+                    borderRadius: 12,
                     backgroundColor: "transparent",
                   }}
                 >
-                  leave a comment
+                  Comment
                 </Text>
               </View>
             </TouchableOpacity>

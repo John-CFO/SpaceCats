@@ -154,7 +154,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                 style={{
                   marginTop: 20,
                   fontSize: 38,
-                  fontWeight: "bold",
+                  fontFamily: "MontserratAlternatesBold",
                   color: "pink",
                 }}
               >
@@ -165,8 +165,9 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
             <Text
               style={{
                 marginBottom: 50,
-                fontSize: 18,
-                fontWeight: "bold",
+                fontSize: 17,
+
+                fontFamily: "MontserratAlternatesRegular",
                 color: "pink",
               }}
             >
@@ -185,7 +186,13 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
               }}
             >
               <Image source={NotFound} style={{ width: 120, height: 120 }} />
-              <Text style={{ fontSize: 25, color: "hotpink" }}>
+              <Text
+                style={{
+                  fontSize: 25,
+                  color: "hotpink",
+                  fontFamily: "MontserratAlternatesRegular",
+                }}
+              >
                 Oops, found no data
               </Text>
 
@@ -201,14 +208,14 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                   <Text
                     style={{
                       marginBottom: 100,
-                      fontWeight: "bold",
+                      fontFamily: "MontserratAlternatesBold",
                       fontSize: 26,
                       color: "pink",
                       paddingHorizontal: 28,
                       paddingVertical: 10,
                       borderWidth: 2,
                       borderColor: "lightgray",
-                      borderRadius: 8,
+                      borderRadius: 12,
                       backgroundColor: "transparent",
                     }}
                   >
@@ -231,6 +238,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                   marginTop: 130,
                   color: "hotpink",
                   fontSize: 15,
+                  fontFamily: "MontserratAlternatesRegular",
                 }}
               >
                 LOADING
