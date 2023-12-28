@@ -10,7 +10,6 @@ interface CommentFormProps {
   onAddComment: (newCommentText: string, commentId: number) => void;
   initialText: string;
   commentId: number;
-  replyUsername: string;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -19,9 +18,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
   onAddComment,
   initialText,
   commentId,
-  replyUsername,
 }) => {
-  const [newComment, setNewComment] = useState(replyUsername || ""); //the emty string is the initial comment state
+  const [newComment, setNewComment] = useState(""); //the emty string is the initial comment state
 
   const handleCommentSubmit = (e: React.FormEvent) => {
     /*--input function to set a comment--*/

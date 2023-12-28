@@ -16,13 +16,11 @@ export interface Comment {
   user: string;
   profilePicture: ImageSourcePropType;
   text: string;
-  replies: Comment[];
   likes: number;
 }
 
 interface CommentSectionProps {
   comments: Comment[];
-  onReply?: (commentId: number, replyUsername: string) => void;
   onLike?: (commentId: number) => void;
   commentId: number;
 }
@@ -31,7 +29,6 @@ interface CommentSectionProps {
 
 const CommentSection: React.FC<CommentSectionProps> = ({
   comments,
-  onReply,
   onLike,
   commentId,
 }) => {
@@ -57,20 +54,12 @@ const CommentSection: React.FC<CommentSectionProps> = ({
       user: "Anon",
       profilePicture: require("../assets/user_images/user1.jpg"),
       text: newCommentText,
-      replies: [],
       likes: 0,
     };
     setCommentData([...commentData, newComment]); //initialized a new comment state with the new comment
     const updatedComments = [...commentData, newComment];
 
     setCommentData(updatedComments);
-  };
-
-  const [replyUsername, setReplyUsername] = useState("");
-
-  const handleReply = (commentId: number, replyUsername: string) => {
-    console.log(`Replying to comment with ID ${commentId}`);
-    setReplyUsername(replyUsername);
   };
 
   const handleLikes = (commentId: number) => {
@@ -88,7 +77,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({
           onAddComment={(text, commentId) => addComment(text, commentId)}
           initialText={`@Anon`}
           commentId={commentId}
-          replyUsername={replyUsername}
         />
       </View>
       <ScrollView style={{ marginTop: 3 }}>
@@ -122,7 +110,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             <View
               style={{
                 width: 280,
-
                 justifyContent: "center",
               }}
             >
@@ -151,11 +138,6 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                   source={likedComments[comment.id] ? redHeart : whiteHeart} //jsx to change from white to red heart
                   style={{ width: 25, height: 25 }}
                 />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => onReply && onReply(comment.id, comment.user)}
-              >
-                <Text style={{ color: "white" }}>Reply</Text>
               </TouchableOpacity>
             </View>
           </View>

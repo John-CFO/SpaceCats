@@ -111,15 +111,6 @@ const Details: React.FC = () => {
     ////////////////////
   };
 
-  const [replyUsername, setReplyUsername] = useState("");
-
-  const handleReply = (commentId: number, replyUsername: string) => {
-    console.log(`Replying to comment with ID ${commentId}`);
-
-    setReplyUsername(replyUsername);
-    handlePrensentModalPress();
-  };
-
   const commentId: number =
     commentData.length > 0 ? parseInt(commentData[0].id, 10) : 0;
 
@@ -313,9 +304,6 @@ const Details: React.FC = () => {
               comments={commentData as any}
               onLike={handleLike}
               commentId={commentId}
-              onReply={(commentId, replyUsername) =>
-                handleReply(commentId, replyUsername)
-              }
             />
           </BottomSheetModal>
         </BottomSheetModalProvider>
