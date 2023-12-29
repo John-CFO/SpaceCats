@@ -19,7 +19,7 @@ export const commentData: CommentProfile[] = [
     id: "1",
     user: "Anon",
     profilePicture: require("../assets/user_images/user1.jpg"),
-    text: "I love this cat, she is so cute *___*",
+    text: "I love this cat, she is so cute *__*",
   },
 
   {

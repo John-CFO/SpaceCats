@@ -57,7 +57,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
       const response = await axios.get(API_URL, {
         params: {
           load,
-          limit: 24,
+          limit: 24, //change the limit to load more images from api
         },
       });
       return response.data;
@@ -204,6 +204,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                   alignItems: "center",
                 }}
               >
+                {/*--refresh button--*/}
                 <TouchableOpacity onPress={handleRefresh}>
                   <Text
                     style={{
@@ -260,7 +261,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
                   </View>
                 )}
                 keyExtractor={(item) => item.id.toString()} //importent for fetch data from API
-                onEndReached={moreImages} //importent for load more data if the list ended
+                onEndReached={moreImages} //importent to load more data if the list ended
                 initialNumToRender={5}
                 onEndReachedThreshold={0.1}
                 contentContainerStyle={{ justifyContent: "center" }}

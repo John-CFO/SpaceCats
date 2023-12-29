@@ -15,6 +15,7 @@ interface CommentFormProps {
 //////////////////////////////////////////////////////////////////////////////////////////
 
 const CommentForm: React.FC<CommentFormProps> = ({
+  //comment props
   onAddComment,
   initialText,
   commentId,

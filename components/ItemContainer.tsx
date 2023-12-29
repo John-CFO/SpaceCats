@@ -18,6 +18,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({
   onPress,
 }: ItemContainerProps) => {
   return (
+    /*--touchable container integrated in collection.tsx--*/
     <TouchableOpacity
       style={{
         borderRadius: 15,

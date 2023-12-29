@@ -40,15 +40,13 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     {}
   );
 
-  //const commentSectionRef = useRef<CommentSectionProps>(null);
-
+  //function to set a comment
   const addComment = (newCommentText: string, parentCommentId: number) => {
     const parentComment = commentData.find(
       (comment) => comment.id === parentCommentId
     );
 
-    //const [replyUsername, setReplyUsername] = useState("");
-
+    //comment params
     const newComment: Comment = {
       id: commentData.length + 1,
       user: "Anon",
@@ -62,6 +60,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     setCommentData(updatedComments);
   };
 
+  //function to like a comment
   const handleLikes = (commentId: number) => {
     setLikedComments((prevLikedComments) => ({
       ...prevLikedComments,
@@ -73,12 +72,14 @@ const CommentSection: React.FC<CommentSectionProps> = ({
   return (
     <View style={{ flex: 1 }}>
       <View>
+        {/*--add a comment section--*/}
         <CommentForm
           onAddComment={(text, commentId) => addComment(text, commentId)}
           initialText={`@Anon`}
           commentId={commentId}
         />
       </View>
+      {/*--comment section--*/}
       <ScrollView style={{ marginTop: 3 }}>
         {commentData.map((comment) => (
           <View
@@ -97,10 +98,12 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 alignItems: "center",
               }}
             >
+              {/*--user image--*/}
               <Image
                 source={comment.profilePicture}
                 style={{ width: 40, height: 40, borderRadius: 20 }}
               />
+              {/*--user name--*/}
               <Text
                 style={{ color: "white", fontSize: 14, fontWeight: "bold" }}
               >
@@ -113,6 +116,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 justifyContent: "center",
               }}
             >
+              {/*--comment text--*/}
               <Text
                 style={{
                   color: "lightgray",
@@ -133,6 +137,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
                 alignItems: "center",
               }}
             >
+              {/*--heath button in the comment section--*/}
               <TouchableOpacity onPress={() => handleLikes(comment.id)}>
                 <Image
                   source={likedComments[comment.id] ? redHeart : whiteHeart} //jsx to change from white to red heart
