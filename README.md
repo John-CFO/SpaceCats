@@ -34,7 +34,7 @@ The app allows you to leave your thoughts as a comment
 
 <div style="display: flex; justify-content: space-between;">
   <h2>Onboarding Screen</h2>
-<image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/ONBOARDINGSCREEN.png?raw=true">
+<image src= "https://github.com/John-CFO/SpaceCats/blob/master/onboarding.png?raw=true">
   
 <h2>Collection Screen</h2>
   <image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/COLLECTIONSCREEN.png?raw=true">
