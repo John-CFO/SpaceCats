@@ -46,7 +46,7 @@ The app allows you to leave your thoughts as a comment
 
 
   <h2>Loading Screen</h2>
-  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/LOADINGSCREEN.png?raw=true">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/loading.png?raw=true">
 
 
   <h2>Details Screen</h2>
