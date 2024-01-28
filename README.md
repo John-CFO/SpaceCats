@@ -50,7 +50,7 @@ The app allows you to leave your thoughts as a comment
 
 
   <h2>Details Screen</h2>
-  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/DETAILSCREEN.png?raw=true">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/details.png?raw=true">
 </div>
 
 
