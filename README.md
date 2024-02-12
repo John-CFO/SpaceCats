@@ -53,7 +53,7 @@ The app allows you to leave your thoughts as a comment
   <image src="https://github.com/John-CFO/SpaceCats/blob/master/details.png?raw=true">
 
   <h2>Details Comments</h2>
-
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/comments.png?raw=true">
 
   <h2>Details Keyboard</h2>
 
