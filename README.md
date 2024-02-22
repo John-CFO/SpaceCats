@@ -1,23 +1,25 @@
-# SpaceCats App
+# SpaceCats app
 
 ## Overview
 
-The SpaceCats Library app is a React Native application developed with Expo. This project is solely for my training purposes to improve my skills in React Native, TypeScript, using REST APIs, and Expo. The app was not developed for public use.
+The SpaceCats Library app is a React Native application developed with Expo. This project is solely for my training purposes to improve my skills in React Native, TypeScript,, Node,js, Express.js as well as using REST APIs and Expo. The app was not developed for public use.
 
-## Objective
+## Goal setting
 
-The main goal of this app is to give me the opportunity to try out different technologies and development skills. The application allows me to retrieve cat images, GIFs, and memes from an external API. There is no intention to use the app for commercial or public purposes.
+The main goal of this app is to give me the opportunity to try out different technologies and development skills. The application allows one to retrieve cat images, GIFs and memes from an external API. There is no intention to use the app for commercial or public purposes.
 
 ## Functionalities
 
-### 1. Image Retrieval
-The app allows me to pull cat images, GIFs, and memes from an external API. For this idea, I used the free version of the cat API from [thecatapi.com](https://documenter.getpostman.com/view/4016432/RWToRJCq).
+### 1. Image retrieval
+The app allows fetching cat images, GIFs and memes from an external API. For this idea I used the free version of the Cat API from [thecatapi.com](https://documenter.getpostman.com/view/4016432/RWToRJCq).
 
-### 2. Evaluation Function
-There is an option to rate images to express my preferences for certain content.
+### 2. Rating function
+There is an option to rate images and comments to express your preferences for certain content.
 
-### 3. Comment Function
-The app allows me to record my thoughts and comments on the images I retrieve.
+### 3. Comment function
+The app allows you to leave your thoughts as a comment
+(there is no storage option as a cloud service) as this is just a practice project.
+
 
 ## Technologies
 
@@ -32,20 +34,30 @@ The app allows me to record my thoughts and comments on the images I retrieve.
 
 <div style="display: flex; justify-content: space-between;">
   <h2>Onboarding Screen</h2>
-<image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/ONBOARDINGSCREEN.png?raw=true">
+<image src= "https://github.com/John-CFO/SpaceCats/blob/master/onboarding.png?raw=true">
+
+<h2>No Data Found Screen</h2>
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/nodata.png?raw=true">
+
   
 <h2>Collection Screen</h2>
-  <image src= "https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/COLLECTIONSCREEN.png?raw=true">
+  <image src= "https://github.com/John-CFO/SpaceCats/blob/master/collection.png?raw=true">
     
-<h2>No Data Found Screen</h2>
-<image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/NODATASCREEN.png?raw=true">
+
 
   <h2>Loading Screen</h2>
-  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/LOADINGSCREEN.png?raw=true">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/loading.png?raw=true">
 
 
   <h2>Details Screen</h2>
-  <image src="https://github.com/John-CFO/SpaceCats/blob/master/assets/readme_images/DETAILSCREEN.png?raw=true">
+  <image src="https://github.com/John-CFO/SpaceCats/blob/master/details.png?raw=true">
+
+  <h2>Details Comments</h2>
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/comments.png?raw=true">
+
+  <h2>Details Keyboard</h2>
+<image src="https://github.com/John-CFO/SpaceCats/blob/master/comments_2.png?raw=true">
+    
 </div>
 
 
