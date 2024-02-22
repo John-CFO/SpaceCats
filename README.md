@@ -62,9 +62,9 @@ The app allows you to leave your thoughts as a comment
 
 
 
-## Live Review (comming soon)
+## Live Review 
 
-[Link to Live Review](http/......................)
+[Link to Live Review](https://youtu.be/_keREzmJGBI)
 
 ## Development Status
 
