@@ -19,7 +19,7 @@ import {
 
 import { heartBTN, splashBTN } from "./assets";
 import { NotFound } from "./assets";
-import CommentSection from "./components/CommentSection";
+import CommentSection, { Comment } from "./components/CommentSection";
 import { commentData } from "./components/Users";
 import Handle from "./components/HandleIndicator";
 
@@ -301,7 +301,8 @@ const Details: React.FC = () => {
             backgroundStyle={{ backgroundColor: "#191919" }}
           >
             <CommentSection
-              comments={commentData as any}
+              /*first the conversion to unknown and then to object Comment[]*/
+              comments={commentData as unknown as Comment[]}
               onLike={handleLike}
               commentId={commentId}
             />

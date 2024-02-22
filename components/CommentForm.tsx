@@ -1,6 +1,12 @@
 ////////////////////////////////comment form/////////////////////////////////////////////
 
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  GestureResponderEvent,
+} from "react-native";
 import React, { useState, useRef, useEffect } from "react";
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +59,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
     //initial count
     let count = 0;
 
-    //setInterval function
+    //setInterval condition
     const interval = setInterval(() => {
       if (count === 0) {
         setDots(".");
@@ -119,7 +125,14 @@ const CommentForm: React.FC<CommentFormProps> = ({
           }}
         />
         {/*--submit button--*/}
-        <TouchableOpacity onPress={handleCommentSubmit as any}>
+        <TouchableOpacity
+          /* unknown ignored the type expectation and GestureResponseEvens => void set the type clearly */
+          onPress={
+            handleCommentSubmit as unknown as (
+              event: GestureResponderEvent
+            ) => void
+          }
+        >
           <View
             style={{
               justifyContent: "center",
