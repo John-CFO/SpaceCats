@@ -227,13 +227,13 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
             </View>
           ) : ///////////////LOADING SECTION
           isLoading ? (
-            <View style={{ height: 700, width: 400, alignItems: "center" }}>
-              <LottieView
-                source={require("./assets/lottie_animation/cat-climber.json")}
-                autoPlay
-                loop
-              />
-
+            <View
+              style={{
+                height: 700,
+                width: 400,
+                alignItems: "center",
+              }}
+            >
               <Text
                 style={{
                   marginTop: 130,
@@ -244,6 +244,12 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
               >
                 LOADING
               </Text>
+              <LottieView
+                source={require("./assets/lottie_animation/cat-climber.json")}
+                autoPlay
+                loop
+                style={{ width: 400, height: 400 }}
+              />
             </View>
           ) : (
             /////////////IMAGE LIST SECTION
