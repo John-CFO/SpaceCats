@@ -65,7 +65,7 @@ The app allows you to leave your thoughts as a comment
 
 <h2 align="center">Live Review</h2>
 
-<p align="center">[Link to Live Review](https://youtu.be/_keREzmJGBI)</p>
+<p align="center">[Link to Live Review](https://youtu.be/sAxkvb925FM)</p>
 
 
 <h2 align="center">Development Status</h2>
