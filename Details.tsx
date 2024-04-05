@@ -119,10 +119,14 @@ const Details: React.FC = () => {
   return (
     <ImageBackground
       source={require("./assets/background_dark.png")}
-      style={{ flex: 1 }}
+      style={{
+        flex: 1,
+      }}
     >
       <SafeAreaView
         style={{
+          justifyContent: "center",
+          alignItems: "center",
           width: "100%",
           height: "100%",
         }}
@@ -131,7 +135,7 @@ const Details: React.FC = () => {
 
         <View
           style={{
-            marginTop: 40,
+            marginTop: 10,
             width: "100%",
             height: 440,
 
@@ -181,19 +185,21 @@ const Details: React.FC = () => {
                   borderWidth: 4,
                   borderColor: "white",
                   borderRadius: 15,
-                  width: 400,
+                  width: 380,
                   height: 340,
-                  paddingHorizontal: 2,
-                  paddingVertical: 2,
+
                   overflow: "hidden",
                 }}
               >
-                <View style={{ borderRadius: 4 }}>
-                  <Image
-                    style={{ width: "100%", height: 330 }}
-                    source={{ uri: imageUrl }}
-                  />
-                </View>
+                <Image
+                  style={{
+                    resizeMode: "cover",
+                    width: "100%",
+                    height: "100%",
+                    //borderRadius: 15,
+                  }}
+                  source={{ uri: imageUrl }}
+                />
               </View>
             </View>
 
@@ -276,7 +282,7 @@ const Details: React.FC = () => {
                   style={{
                     marginBottom: 100,
                     fontFamily: "MontserratAlternatesBold",
-                    fontSize: 24,
+                    fontSize: 20,
                     color: "pink",
                     paddingHorizontal: 28,
                     paddingVertical: 10,

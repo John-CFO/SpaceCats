@@ -1,6 +1,12 @@
 //////////////////////////comment section///////////////////////////////////////
 
-import { View, Text, Image, ImageSourcePropType } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ImageSourcePropType,
+  useWindowDimensions,
+} from "react-native";
 import React, { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
@@ -60,6 +66,9 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     setCommentData(updatedComments);
   };
 
+  // Get the screen width using useWindowDimensions
+  const { width } = useWindowDimensions();
+
   //function to like a comment
   const handleLikes = (commentId: number) => {
     setLikedComments((prevLikedComments) => ({
@@ -93,7 +102,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
           >
             <View
               style={{
-                width: 80,
+                width: "15%",
                 justifyContent: "center",
                 alignItems: "center",
               }}
@@ -112,7 +121,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             </View>
             <View
               style={{
-                width: 280,
+                width: width * 0.6, // Adjust the width dynamically
                 justifyContent: "center",
               }}
             >
@@ -129,10 +138,9 @@ const CommentSection: React.FC<CommentSectionProps> = ({
             </View>
             <View
               style={{
-                width: 50,
+                width: (width as number) * 0.2, // Adjust the width dynamically and import useWindowDimensions + function
                 height: 80,
                 flexDirection: "column",
-
                 justifyContent: "space-evenly",
                 alignItems: "center",
               }}

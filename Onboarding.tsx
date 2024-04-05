@@ -80,7 +80,6 @@ const Onboarding = () => {
               <Text
                 style={{
                   marginBottom: 100,
-                  //fontWeight: "bold",
                   fontSize: 26,
                   fontFamily: "MontserratAlternatesBold",
                   color: "pink",
@@ -97,6 +96,7 @@ const Onboarding = () => {
             </View>
           </Animatable.View>
         </TouchableOpacity>
+
         {/*--StatusBar to manipulate the statusbar layout--*/}
         <StatusBar
           barStyle="light-content"

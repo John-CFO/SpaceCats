@@ -123,7 +123,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("./assets/background_dark.png")}
-      style={{ flex: 1 }}
+      style={{ flex: 1, justifyContent: "center", width: "100%" }}
     >
       <SafeAreaView>
         <View
@@ -179,7 +179,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
           {catImages.length === 0 && !isLoading ? ( //no data found
             <View
               style={{
-                width: 400,
+                width: "100%",
                 height: 800,
                 justifyContent: "center",
                 alignItems: "center",
@@ -230,7 +230,7 @@ const Collection: React.FC<CollectionProps> = ({ navigation }) => {
             <View
               style={{
                 height: 700,
-                width: 400,
+                width: "100%",
                 alignItems: "center",
               }}
             >

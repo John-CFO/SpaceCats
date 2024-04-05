@@ -105,7 +105,8 @@ const CommentForm: React.FC<CommentFormProps> = ({
           height: 50,
           flexDirection: "row",
           justifyContent: "space-between",
-          paddingRight: 5,
+          paddingRight: 10,
+          backgroundColor: "#191919",
         }}
       >
         <TextInput
@@ -121,7 +122,7 @@ const CommentForm: React.FC<CommentFormProps> = ({
             color: "lightgray",
             fontSize: 22,
             fontWeight: "bold",
-            width: 300,
+            width: "75%",
           }}
         />
         {/*--submit button--*/}
