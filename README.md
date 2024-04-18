@@ -68,6 +68,16 @@ The app allows you to leave your thoughts as a comment
 <p align="center">[Link to Live Review](https://youtu.be/sAxkvb925FM)</p>
 
 
+
+<h2 align="center">How to run this app</h2>
+
+// in progress
+<h3 align="center">Start Backend</h3>
+<p align="center">To start the backend, run the following command:</p>
+npm run start:backend
+
+//in progress
+
 <h2 align="center">Development Status</h2>
 
 <p align="center">This project is in ongoing development and will be used exclusively for my private training purposes. If you have any questions or suggestions, please create an issue or submit a pull request.</p>
