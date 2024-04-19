@@ -68,15 +68,39 @@ The app allows you to leave your thoughts as a comment
 <p align="center">[Link to Live Review](https://youtu.be/sAxkvb925FM)</p>
 
 
-
+</br>
 <h2 align="center">How to run this app</h2>
 
-// in progress
-<h3 align="center">Start Backend</h3>
-<p align="center">To start the backend, run the following command:</p>
-npm run start:backend
+<p align="center">First of all, make sure you have installed Node.js global and Express.js global for the backend and obtained your own API key for free from https://thecatapi.com.</br> And also put the key in an <code>.env</code> file in the app directory.</p>
 
-//in progress
+
+</br>
+<h3 align="left">Start Backend</h3>
+<p align="left">To start the backend, run the following command:</p>
+
+```ruby
+npm run start:backend
+```
+<p>This will start the backend on port 8021 and connect to the API using the key stored in the .env file.</p>
+
+</br>
+<h3 align="left">Start frontend in the Android emulator</h3>
+
+1. Download and install Android Studio if you haven't already.
+2. Open Android Studio and select "Project" -> "More Actions" -> "Virtual Device Manager".
+3. Select a virtual device type (e.g. Pixel 4a, Pixel 6 or Pixel C) and load the frontend.
+4. Make sure the backend is running before starting the frontend.
+5. Start the frontend in the terminal with the command:
+```ruby
+npm start
+```
+
+
+<p>If you have trouble running the app try:
+ 
+```ruby
+npm start --reset-cache
+```
 
 <h2 align="center">Development Status</h2>
 
