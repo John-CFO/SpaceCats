@@ -21,7 +21,7 @@ The app allows you to leave your thoughts as a comment
 (there is no storage option as a cloud service) as this is just a practice project.
 
 
-<h2<Technologies</h2>
+<h2 align="center">Technologies</h2>
 
 - React Native
 - TypeScript
@@ -30,7 +30,7 @@ The app allows you to leave your thoughts as a comment
 - Node.js
 - Express.js
 
-<h2>Screenshots</h2>
+<h2 align="center">Screenshots</h2>
 
 
  <h2 align="center">Onboarding Screen</h2>
