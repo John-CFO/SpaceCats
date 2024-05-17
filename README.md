@@ -4,9 +4,13 @@
 
 <p align="right">The SpaceCats Library app is a React Native application developed with Expo. This project is solely for my training purposes to improve my skills in React Native, TypeScript,, Node,js, Express.js as well as using REST APIs and Expo. The app was not developed for public use.</p>
 
+<hr/>
+
 <h2 align="center">Goal setting</h2>
 
 <p align="right">The main goal of this app is to give me the opportunity to try out different technologies and development skills. The application allows one to retrieve cat images, GIFs and memes from an external API. There is no intention to use the app for commercial or public purposes.
+
+<hr/>
 
 <h2 align="center">Functionalities</h2>
 
@@ -20,6 +24,7 @@ There is an option to rate images and comments to express your preferences for c
 The app allows you to leave your thoughts as a comment
 (there is no storage option as a cloud service) as this is just a practice project.
 
+<hr/>
 
 <h2 align="center">Technologies</h2>
 
@@ -29,6 +34,8 @@ The app allows you to leave your thoughts as a comment
 - REST API
 - Node.js
 - Express.js
+
+<hr/>
 
 <h2 align="center">Screenshots</h2>
 
@@ -60,8 +67,7 @@ The app allows you to leave your thoughts as a comment
 <p align="right"><image src="https://github.com/John-CFO/SpaceCats/blob/master/comments_2.png?raw=true"></p>
 
     
-
-
+<hr/>
 
 <h2 align="center">Live Review</h2>
 
@@ -102,10 +108,13 @@ npm start
 npm start --reset-cache
 ```
 
+<hr/>
+
 <h2 align="center">Development Status</h2>
 
 <p align="center">This project is in ongoing development and will be used exclusively for my private training purposes. If you have any questions or suggestions, please create an issue or submit a pull request.</p>
 
+<hr/>
 
 <h2 align="center">License</h2>
 
