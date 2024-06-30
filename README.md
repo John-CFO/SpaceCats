@@ -2,13 +2,13 @@
 
 <h2 align="center">Overview</h2>
 
-<p align="right">The SpaceCats Library app is a React Native application developed with Expo. This project is solely for my training purposes to improve my skills in React Native, TypeScript,, Node,js, Express.js as well as using REST APIs and Expo. The app was not developed for public use.</p>
+<p align="center">The SpaceCats Library app is a React Native application developed with Expo. This project is solely for my training purposes to improve my skills in React Native, TypeScript,, Node,js, Express.js as well as using REST APIs and Expo. The app was not developed for public use.</p>
 
 <hr/>
 
 <h2 align="center">Goal setting</h2>
 
-<p align="right">The main goal of this app is to give me the opportunity to try out different technologies and development skills. The application allows one to retrieve cat images, GIFs and memes from an external API. There is no intention to use the app for commercial or public purposes.
+<p align="center">The main goal of this app is to give me the opportunity to try out different technologies and development skills. The application allows one to retrieve cat images, GIFs and memes from an external API. There is no intention to use the app for commercial or public purposes.
 
 <hr/>
 
